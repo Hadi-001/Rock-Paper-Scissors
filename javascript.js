@@ -15,3 +15,17 @@ function getHumanChoice(){
     return user_choice;
 }
 
+let humanScore = 0,computerScore = 0;
+
+function playRound(HumanChoice,ComputerChoice){
+    if((HumanChoice == 'rock' && ComputerChoice == 'scissors') || (HumanChoice == 'scissors' && ComputerChoice == 'paper') || (HumanChoice == "paper" && ComputerChoice == "rock")){
+        ++humanScore;
+        console.log(`You win ${HumanChoice} beats ${ComputerChoice} well done!!`);
+        console.log(`Your score is ${humanScore} while computer's score is ${computerScore}`);
+    }
+    else if((ComputerChoice == 'rock' && HumanChoice == 'scissors') || (ComputerChoice == 'scissors' && HumanChoice == 'paper') || (ComputerChoice == "paper" && HumanChoice == "rock")){
+        ++computerScore;
+        console.log(`You lost ${ComputerChoice} beats ${HumanChoice} better luck next time!!`);
+        console.log(`Your score is ${humanScore} while computer's score is ${computerScore}`);
+    }
+}
