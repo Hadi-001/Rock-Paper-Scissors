@@ -29,3 +29,16 @@ function playRound(HumanChoice,ComputerChoice){
         console.log(`Your score is ${humanScore} while computer's score is ${computerScore}`);
     }
 }
+function playGame(){
+    humanScore = 0,computerScore = 0;
+    let i = 0;
+    while(i < 5){
+        let previous_human_score = humanScore,previous_computer_score = computerScore;
+        playRound(getHumanChoice(),getComputerChoice());
+        if(previous_computer_score != computerScore || previous_human_score != humanScore){
+            ++i;
+        }
+    }
+}
+
+playGame();
