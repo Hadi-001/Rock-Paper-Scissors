@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,15 +22,22 @@
         </div>
         <div class="image-and-button">
             <div>
-                <img src="images/question-mark.png" alt="">
+                <img src="images/question-mark.png" alt="" id="human-img">
             </div>
             <div class="newgame-btn-with-display">
-                <div class="display-round-winner">Computer won this round</div>
+                <div class="display-round-winner"></div>
                 <button class="Newgame"> New Game </button>
             </div>
             
             <div>
-                <img src="images/question-mark.png" alt="">
+                <img src="images/question-mark.png" alt="" id="computer-img">
+            </div>
+        </div>
+        <div class="all-buttons">
+            <div class="btn-of-rock-paper-scissors">
+                <button class="rock-btn">rock</button>
+                <button class="paper-btn">paper</button>
+                <button class="scissors-btn">scissors</button>
             </div>
         </div>
 

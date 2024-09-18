@@ -22,20 +22,33 @@ img{
     
 }
 .Newgame{
-    font-size: 28px;
-    display: flex;
     padding-left: 10px;
     padding-right: 10px;
     margin: 4px 2px;
     width: 180px;
     height: 60px;
+}
+.btn-of-rock-paper-scissors,.Newgame,.rock-btn,.paper-btn,.scissors-btn{
     align-items: center;
     justify-content: center;
     justify-items: center;
     border: solid 2px black;
     border-radius: 8px;
     cursor: pointer;
-    
+    font-size: 28px;
+    display: flex;
+}
+.btn-of-rock-paper-scissors{
+    border: none;
+    gap: 70px;
+    margin-top: 70px;
+}
+
+.rock-btn,.paper-btn,.scissors-btn{
+    font-size: 28px;
+    width: 200px;
+    height: 50px;
+
 }
 .game-name,.display-round-winner,.scoreboard{
     font-size: 32px;

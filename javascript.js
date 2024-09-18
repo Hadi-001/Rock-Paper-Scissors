@@ -20,25 +20,70 @@ let humanScore = 0,computerScore = 0;
 function playRound(HumanChoice,ComputerChoice){
     if((HumanChoice == 'rock' && ComputerChoice == 'scissors') || (HumanChoice == 'scissors' && ComputerChoice == 'paper') || (HumanChoice == "paper" && ComputerChoice == "rock")){
         ++humanScore;
-        console.log(`You win ${HumanChoice} beats ${ComputerChoice} well done!!`);
-        console.log(`Your score is ${humanScore} while computer's score is ${computerScore}`);
     }
     else if((ComputerChoice == 'rock' && HumanChoice == 'scissors') || (ComputerChoice == 'scissors' && HumanChoice == 'paper') || (ComputerChoice == "paper" && HumanChoice == "rock")){
         ++computerScore;
-        console.log(`You lost ${ComputerChoice} beats ${HumanChoice} better luck next time!!`);
-        console.log(`Your score is ${humanScore} while computer's score is ${computerScore}`);
-    }
-}
-function playGame(){
-    humanScore = 0,computerScore = 0;
-    let i = 0;
-    while(i < 5){
-        let previous_human_score = humanScore,previous_computer_score = computerScore;
-        playRound(getHumanChoice(),getComputerChoice());
-        if(previous_computer_score != computerScore || previous_human_score != humanScore){
-            ++i;
-        }
     }
 }
 
-playGame();
+
+let new_game = document.querySelector(".Newgame");
+let computer_result = document.querySelector(".computer-result");
+let human_result = document.querySelector(".human-result");
+
+let human_chose_rock = document.querySelector(".rock-btn");
+let human_chose_paper = document.querySelector(".paper-btn");
+let human_chose_scissors = document.querySelector(".scissors-btn");
+
+let human_img = document.querySelector("#human-img");
+let computer_img = document.querySelector("#computer-img")
+
+let display_round_winner = document.querySelector(".display-round-winner");
+
+human_chose_paper.addEventListener("click",()=>{
+    playGame("paper");
+})
+human_chose_rock.addEventListener("click",()=>{
+    playGame("rock");
+})
+human_chose_scissors.addEventListener("click",()=>{
+    playGame("scissors");
+})
+
+function playGame(human_choice){
+    if(computerScore >= 5 || humanScore >= 5)reset();
+    let ComputerChoice = getComputerChoice();
+    let HumanChoice = human_choice;
+    let previous_computer_score = computerScore;
+
+    human_img.src = "images/" + HumanChoice +".png";
+    playRound(HumanChoice,ComputerChoice);
+    computer_img.src = "images/" + ComputerChoice + ".png";
+    if(ComputerChoice == HumanChoice)display_round_winner.textContent = "No winner this round";
+    else if(previous_computer_score < computerScore){
+        display_round_winner.textContent = "Computer won this round!";
+        computer_result.textContent = computerScore;
+        
+    }
+    else {
+        display_round_winner.textContent ="Congrats you won this round!!";
+        human_result.textContent = humanScore;
+    }
+    if(humanScore == 5)display_round_winner.textContent = "WAHSHH!!";
+    if(computerScore == 5)display_round_winner.textContent = "YOU LOSE :(";
+}
+
+function reset(){
+    humanScore = 0;
+    computerScore = 0;
+    computer_result.textContent = 0;
+    human_result.textContent = 0;
+    human_img.src = "images/question-mark.png";
+    computer_img.src = "images/question-mark.png";
+    display_round_winner.textContent = "Enter your choice";
+}
+
+new_game.addEventListener('click',reset);
+
+
+//playGame();
